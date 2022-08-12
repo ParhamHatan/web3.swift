@@ -91,10 +91,10 @@ public class EthereumAccount: EthereumAccountProtocol {
         }
         
         do {
-            try keyStorage.encryptAndStorePrivateKey(key: privateKey, keystorePassword: password)
+            try multipleKeyStorage.encryptAndStorePrivateKey(key: privateKey, keystorePassword: password)
             let publicKey = try KeyUtil.generatePublicKey(from: privateKey)
             let address = KeyUtil.generateAddress(from: publicKey).value
-            return try self.init(addressString: address, keyStorage: keyStorage, keystorePassword: password)
+            return try self.init(addressString: address, keyStorage: multipleKeyStorage, keystorePassword: password)
         } catch {
             throw EthereumAccountError.createAccountError
         }
@@ -118,10 +118,10 @@ public class EthereumAccount: EthereumAccountProtocol {
             throw EthereumAccountError.importAccountError
         }
         do {
-            try keyStorage.encryptAndStorePrivateKey(key: privateKey, keystorePassword: password)
+            try multipleKeyStorage.encryptAndStorePrivateKey(key: privateKey, keystorePassword: password)
             let publicKey = try KeyUtil.generatePublicKey(from: privateKey)
             let address = KeyUtil.generateAddress(from: publicKey).value
-            return try self.init(addressString: address, keyStorage: keyStorage, keystorePassword: password)
+            return try self.init(addressString: address, keyStorage: multipleKeyStorage, keystorePassword: password)
         } catch {
             throw EthereumAccountError.importAccountError
         }
