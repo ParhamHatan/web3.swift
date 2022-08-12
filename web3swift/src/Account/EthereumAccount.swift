@@ -85,7 +85,7 @@ public class EthereumAccount: EthereumAccountProtocol {
         }
     }
     
-    public static func create(keyStorage: EthereumMultipleKeyStorageProtocol, keystorePassword password: String) throws -> EthereumAccount {
+    public static func create(multipleKeyStorage: EthereumMultipleKeyStorageProtocol, keystorePassword password: String) throws -> EthereumAccount {
         guard let privateKey = KeyUtil.generatePrivateKeyData() else {
             throw EthereumAccountError.createAccountError
         }
@@ -113,7 +113,7 @@ public class EthereumAccount: EthereumAccountProtocol {
         }
     }
     
-    public static func importAccount(keyStorage: EthereumMultipleKeyStorageProtocol, privateKey: String, keystorePassword password: String) throws -> EthereumAccount {
+    public static func importAccount(multipleKeyStorage: EthereumMultipleKeyStorageProtocol, privateKey: String, keystorePassword password: String) throws -> EthereumAccount {
         guard let privateKey = privateKey.web3.hexData else {
             throw EthereumAccountError.importAccountError
         }
